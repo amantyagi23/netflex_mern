@@ -1,0 +1,46 @@
+MERN -> 
+
+M -> mongo database
+E -> Express -> server -> rest full api tools
+R -> React -> frontEnd -> using js and html -> jsx -> hooks 
+N -> Node js -> runtime js -> modules run system -> server -> or  core module 
+
+MERN stack -> Language -> javascript
+
+3 teir archcitexture ->
+
+client(frontEnd) -> backend(api)(server) -> database(mongodb) 
+
+talk to eachother using json -> javascript object notation ->
+
+object -> form -> string -> similar to javascript object 
+
+Json -> data travaler -> client backend database
+
+request and response 
+
+Restfull apis 
+
+Get 
+post 
+put or patch
+delete
+
+
+
+what to create and from where to create 
+
+
+user auth system
+json -> postman 
+
+netflix -> 
+
+
+routes -> path(request) , controller(response) , model(database structure ) , repo(database operation) 
+
+
+method -> post
+
+
+500 - internal server error 
