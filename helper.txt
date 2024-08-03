@@ -44,3 +44,36 @@ method -> post
 
 
 500 - internal server error 
+
+
+
+
+client -> request -> server
+database -> server
+server -> database
+server -> response {json} -> client
+
+
+axios , fetch -> data fetch  from backend -> 
+
+data request , response ->
+
+
+
+
+create user -> backend api -> body , params, query,
+
+frontEnd - hit (data)
+
+cors  -> 2 or more than two sytem can talk with other using request and response
+
+role based access control
+
+
+role -> 
+movie create  -> admin
+
+movie see -> user 
+
+justify action 
+
