@@ -1,16 +1,36 @@
 import {useForm} from 'react-hook-form'
+import { login } from '../modules/user/services/userServices';
+import { toast } from "react-toastify";
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 
     const {register,handleSubmit,formState:{errors}} = useForm();
+    const navigate = useNavigate();
+    const onSubmit = async(data) =>{
+      
 
+        try {
+            const result  = await login(data);
+
+            if(result.status === 200){
+                toast.success(result.data.message)
+                navigate('/')
+            }
+            else{
+                toast.error(result.data.message)
+            }
+        } catch (error) {
+            toast.error(error.message.toString())
+        }
+    }
   return (
     <div className="min-h-screen flex flex-col">
     <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
         <div className="px-6 py-8 rounded shadow-md text-white w-full">
         <h1 className="font-bold text-center text-red-900 text-6xl mb-5">NETFLEX</h1>  
             
-           <form >
+           <form onSubmit={handleSubmit(onSubmit)} >
            <input 
            {...register('email')}
                 type="text"
@@ -19,6 +39,7 @@ const LoginPage = () => {
                 placeholder="Email" />
 
             <input 
+            {...register("password")}
                 type="password"
                 className="block border border-grey-light w-full p-3 rounded mb-4"
                 name="password"
