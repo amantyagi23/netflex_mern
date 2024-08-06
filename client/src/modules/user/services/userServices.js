@@ -38,5 +38,15 @@ export const changePassword = async (data)=>{
    }
 }
 
+export const getMe = async() =>{
+   try {
+      const response =  await axios.get(`${baseURL}/user/getme`,{headers:{Authorization:getToken()}});
+     return response
 
+   } catch (error) {
+      console.log(error);
+      
+      throw new Error(error.response.data.message.toString());
+   }
+}
 

@@ -14,7 +14,5 @@ export const remove = () =>{
 }
 
 export const isAuthenticated =()=>{
-    console.log(getToken());
-    
     return getToken() !== undefined;
 }

@@ -1,7 +1,13 @@
+import Navbar from "../shared/components/Navbar"
 
 const DashboardPage = () => {
   return (
-    <div>DashboardPage</div>
+
+    <>
+    <Navbar/>
+
+    <h1>Hello Admin </h1>
+    </>
   )
 }
 

@@ -7,7 +7,8 @@ export const ensureAuthentication = (req,resp,next) =>{
         if(!accessToken){
             throw new Error("No Access Token Found!! Please Login")
         }
-        console.log(decodeJWT(accessToken))
+     const user =  decodeJWT(accessToken);
+     req.decoded =  user;
         next();
     } catch (error) {
        resp.status(403).json({message:error.message.toString()}) 

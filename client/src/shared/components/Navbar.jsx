@@ -1,6 +1,14 @@
+import { useState } from "react";
+import { useUser } from "../providers/UserProvider";
 
 
 const Navbar = () => {
+  const { user } = useUser();
+const [showMenu, setShowMenu] = useState(false);
+
+const openMenu = () => {
+  setShowMenu(!showMenu)
+}
   return ( 
     <> 
       <header className="bg-black">
@@ -29,10 +37,32 @@ const Navbar = () => {
               </button>
             </div>
           </div>
-          <div className="text-white">
+         <div>
+           {user !== null? <div>
+            <div className="relative ml-4 flex-shrink-0">
+            <div>
+              <button onClick={openMenu} type="button" className="relative flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" >
+                Welcome {user.userName}
+                
+              </button>
+            </div>
+
+          
+            {
+              showMenu && <div className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" >
+             
+              <a href="/profile" className="block px-4 py-2 text-sm text-gray-700" >Your Profile</a>
+              {user.role === 'admin' &&  <a href="/dashboard" className="block px-4 py-2 text-sm text-gray-700" >Dashboard</a>}
+              <a href="/settings" className="block px-4 py-2 text-sm text-gray-700" >Settings</a>
+              <a href="/logout" className="block px-4 py-2 text-sm text-gray-700" >Sign out</a>
+            </div>
+            }
+          </div>
+           </div> : <div className="text-white">
             <a href="/login" className="">Login</a>
             <a href="/signup">Sign Up</a>
-          </div>
+          </div> }
+         </div>
         </div>
         <div className="mobile-menu hidden md:hidden">
           <ul className="mt-4 space-y-4">

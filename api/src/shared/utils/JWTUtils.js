@@ -4,7 +4,7 @@ export const secret = "213354tgfver65ytgfvcdw4r"
 
 export const createJWTToken = (user) => {
     try {
-        return jwt.sign(user,secret,{expiresIn:"30s"})
+        return jwt.sign(user,secret,{expiresIn:"1h"})
     } catch (error) {
         throw new Error("Error in generating token")
     }

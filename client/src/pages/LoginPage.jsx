@@ -1,9 +1,11 @@
 import {useForm} from 'react-hook-form'
-import { login } from '../modules/user/services/userServices';
+import { getMe, login } from '../modules/user/services/userServices';
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
+import { useUser } from '../shared/providers/UserProvider';
 
 const LoginPage = () => {
+    const {updateUser} = useUser()
 
     const {register,handleSubmit,formState:{errors}} = useForm();
     const navigate = useNavigate();
@@ -14,6 +16,8 @@ const LoginPage = () => {
             const result  = await login(data);
 
             if(result.status === 200){
+              const result2 =  await getMe();
+              updateUser(result2.data.userDTO);
                 toast.success(result.data.message)
                 navigate('/')
             }
