@@ -17,6 +17,9 @@ const LoginPage = () => {
 
             if(result.status === 200){
               const result2 =  await getMe();
+              if(result2.data.userDTO.role === 'admin'){
+                localStorage.setItem("role","Admin")
+              }
               updateUser(result2.data.userDTO);
                 toast.success(result.data.message)
                 navigate('/')

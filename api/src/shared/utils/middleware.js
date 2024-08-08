@@ -15,7 +15,17 @@ export const ensureAuthentication = (req,resp,next) =>{
     }
 }
 
-
+// is admin or not
 export const ensureAuthorization = (req,resp,next)=>{
-
+    try {
+        const {role,userId}  = req.decoded;
+        if(role === 'admin'){
+            next();
+        }else{
+            throw new Error('Your are Not A Admin')
+        }
+       
+    } catch (error) {
+        resp.status(403).json({message:error.message.toString()}) 
+    }
 }

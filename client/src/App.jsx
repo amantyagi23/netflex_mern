@@ -12,6 +12,7 @@ import { getMe } from './modules/user/services/userServices';
 import { getToken, isAuthenticated } from './modules/user/services/authServices';
 import AdminRoute from './shared/routes/AdminRoute';
 import DashboardPage from './pages/DashboardPage';
+import LogoutPage from './pages/LogoutPage';
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
       <Route path='/login' element={<LoginPage/>}/>
       <Route path='/signup' element={<SignupPage/>}/>
       <Route path='/profile' element={<ProtectedRoute><ProfilePage/></ProtectedRoute>} errorElement={<ErrorBoundary/>} />
-
+      <Route path='/logout' element={<ProtectedRoute><LogoutPage/></ProtectedRoute>}/>
       <Route path='/dashboard' element={<ProtectedRoute><AdminRoute><DashboardPage/></AdminRoute></ProtectedRoute> }/>
     </Routes>
     </BrowserRouter>

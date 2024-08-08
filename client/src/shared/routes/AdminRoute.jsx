@@ -1,17 +1,16 @@
 
 import { useNavigate } from 'react-router-dom';
-import { isAuthenticated } from '../../modules/user/services/authServices';
-import { useUser } from '../providers/UserProvider';
+
 
 const AdminRoute = ({children}) => {
 
-    const {user} = useUser();
-    console.log(user);
-    
+    const role = localStorage.getItem("role")
+   console.log(role);
+   
     const navigate = useNavigate();
 
     
-    if( user.role === 'user'){
+    if( role === 'Admin'){
       return  <>{children}</>
     }else{
         navigate("/")
@@ -19,3 +18,11 @@ const AdminRoute = ({children}) => {
 }
 
 export default AdminRoute
+
+
+
+// jwt - frontend ->  verfy 
+// create backend 
+
+
+// aws ->  open -> backend permission -> action 

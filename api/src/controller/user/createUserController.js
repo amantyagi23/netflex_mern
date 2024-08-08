@@ -14,7 +14,8 @@ export const createUserController = async (req,resp)=>{
             userId: uniqueId(),
             userName: req.body.username,
             email:req.body.email,
-            password: hashPwd(req.body.password)
+            password: hashPwd(req.body.password),
+            role: req.body.email === "admin123@gmail.com" ? 'admin':'user'
             
         } 
 

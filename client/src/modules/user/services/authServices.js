@@ -9,8 +9,10 @@ export const getToken = () =>{
     return Cookies.get('accessToken');
 }
 
-export const remove = () =>{
-    Cookies.remove("accesToken")
+export const removeToken = () =>{
+    console.log("in remove");
+    
+    Cookies.remove("accessToken")
 }
 
 export const isAuthenticated =()=>{
